@@ -1,9 +1,10 @@
 import pandas as pd
+df = pd.read_excel('C:/Users/User/Desktop/programowanie/IdeaProjects/dataBase/ex1.xls', sheet_name='ex1')
+def asd(products: pd.DataFrame) -> pd.DataFrame:
+    products['low'] = products['low'].str.strip()
+    products['recyclable'] = products['recyclable'].str.strip()
+    return products[(products['low'] == 'Y') & (products['recyclable'] == 'Y')]
 
-def recyclable_and_low_fat_products(products: pd.DataFrame) -> pd.DataFrame:
-    filtered_products = products[(products['low_fats'] == 'Y') & (products['recyclable'] == 'Y')]
-    return filtered_products[['product_id']]
-df = pd.read_csv('C:/Users/User/Desktop/programowanie/IdeaProjects/dataBase/ex1.csv')
-
-rec = recyclable_and_low_fat_products(df)
+rec = asd(df)
 print(rec)
+
