@@ -7,7 +7,7 @@ def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
         nth_row  = sorted_employee.loc[N-1,'salary']
         return pd.DataFrame([nth_row],columns=[f'getNthHighestSalary({N})'])
     else:
-        return pd.DataFrame([np.NaN],columns = [f'getNthHighestSalary({N})'])
+        return pd.DataFrame([np.NaN],columns = [ f'getNthHighestSalary({N})'])
 
 
 
