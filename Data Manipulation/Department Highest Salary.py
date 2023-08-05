@@ -1,6 +1,14 @@
 import pandas as pd
 
 def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    employee['desne_rank'] = employee.groupby('departmentId')['salary'].rank(method='dense',ascending=False)
+    employee =  employee[employee['desne_rank'] == 1]
+    merged_table = pd.merge(employee,department, left_on='departmentId', right_on='id', how='left')
+    result = merged_table[['name_y', 'name_x', 'salary']]  
+    result.columns = ['Department', 'Employee', 'Salary'] 
+    return result
+    
+
 
 
 Employee = pd.DataFrame([
@@ -14,3 +22,6 @@ Department = pd.DataFrame([
 ['1', 'IT'],
 ['2', 'Sales']
 ], columns=['id', 'name']).astype({'id':'Int64', 'name':'object'})
+
+
+print(department_highest_salary(Employee,Department))
