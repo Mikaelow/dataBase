@@ -1,3 +1,10 @@
+# Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+
+# Return the result table in any order.
+
+# The result format is in the following example.
+
+
 import pandas as pd
 
 def replace_employee_id_with_the_unique_identifier(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> pd.DataFrame:
