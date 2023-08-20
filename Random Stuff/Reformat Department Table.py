@@ -5,7 +5,9 @@
 import pandas as pd
 
 def reformat_department_table(department : pd.DataFrame):
-    return 0
+    id
+    new_tbl = pd.DataFrame({'id':department['id']})
+    return new_tbl
 
 
 
@@ -15,4 +17,4 @@ Department = pd.DataFrame(data, columns=['id', 'revenue', 'month']).astype(
 
 
 if(__name__ == '__main__'):
-    print('elo')
+    print(reformat_department_table(Department))
