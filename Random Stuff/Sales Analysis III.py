@@ -1,7 +1,7 @@
 # Write a solution to report the products that were only sold in the first quarter of 2019. That is, between 2019-01-01 and 2019-03-31 inclusive.
 # Return the result table in any order.
 # The result format is in the following example.
-
+ 
 import pandas as pd
 
 def sales_analysis(product: pd.DataFrame, sales: pd.DataFrame) -> pd.DataFrame:

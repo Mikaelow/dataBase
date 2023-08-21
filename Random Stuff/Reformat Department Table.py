@@ -1,6 +1,6 @@
 # Reformat the table such that there is a department id column and a revenue column for each month.
 # Return the result table in any order.
-# The result format is in the following example.
+# The result format is in the following example. 
 
 import pandas as pd
 
