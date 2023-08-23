@@ -7,13 +7,17 @@
 import pandas as pd
 
 def find_investments(insurance: pd.DataFrame) -> pd.DataFrame:
-    insurance['policzone_lat'] = insurance.groupby('lat')['lat'].transform('count')
+    insurance['polaczone'] = insurance['lat'].astype(str).str.cat(insurance['lon'].astype(str), sep=' ')
+    insurance['policzone_loc'] = insurance.groupby('polaczone')['polaczone'].transform('count')
     insurance['policzone_tiv'] = insurance.groupby('tiv_2015')['tiv_2015'].transform('count')
-    unique_location = insurance[(insurance['policzone_lat'] == 1) & (insurance['policzone_tiv']>1)]
-    # unique_location = unique_location.groupby('tiv_2015')['tiv_2016'].sum().reset_index()
+    insurance = insurance.drop(['lat','lon'],axis=1)
+    unique_location = insurance[(insurance['policzone_loc'] == 1) & (insurance['policzone_tiv']>1)]
+    unique_location = unique_location.groupby('tiv_2015')['tiv_2016'].sum().reset_index()
+    del(insurance)
     sum_2016 = unique_location['tiv_2016'].sum().round(2)
-    # return pd.DataFrame([sum_2016],columns=['tiv_2016'])
-    return unique_location
+    del(unique_location)
+    return pd.DataFrame([sum_2016],columns=['tiv_2016'])
+    # return unique_location
 
 
 
