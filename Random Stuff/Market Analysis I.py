@@ -4,9 +4,9 @@ def market_analysis(users: pd.DataFrame, orders: pd.DataFrame, items: pd.DataFra
     orders_2019 = orders[orders['order_date'].dt.year == 2019].reset_index()
     orders_2019['counted_orders'] = orders_2019.groupby('buyer_id')['buyer_id'].transform('count')
     merged_table = pd.merge(left=users,right=orders_2019,left_on='user_id',right_on='buyer_id',how='left')
-    resoults =  merged_table[['user_id','join_date','counted_orders']].drop_duplicates().fillna(0)
-    resoults.columns = ['buyer_id','join_date','orders_in_2019']
-    return resoults
+    resoult =  merged_table[['user_id','join_date','counted_orders']].drop_duplicates().fillna(0)
+    resoult.columns = ['buyer_id','join_date','orders_in_2019']
+    return resoult
 
 
 data = [[1, '2018-01-01', 'Lenovo'], [2, '2018-02-09', 'Samsung'], [3, '2018-01-19', 'LG'], [4, '2018-05-21', 'HP']]
