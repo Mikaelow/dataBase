@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def second_highest_salary(employee: pd.DataFrame):
-    unique_values = employee.salary.unique() #zmienia w liste
+    unique_values = employee.salary.unique() 
     if len(unique_values)>=2:  
         sorted_values = sorted(unique_values,reverse=True)[1]
         return pd.DataFrame([sorted_values],columns=['SecondHighestSalary'])
